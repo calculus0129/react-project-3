@@ -9,6 +9,7 @@ function App() {
   function onChangeValue(index, value) {
     changeValues((prevValues) => {
       prevValues[index] = value;
+      console.log(prevValues);
       return prevValues;
     });
   }
@@ -19,12 +20,29 @@ function App() {
       <table>
         <tbody>
           <tr>
-            <td><InputText title='Initial Investment' /></td>
-            <td><InputText title='Annual Investment' /></td>
+            <td>
+              <InputText title='Initial Investment'
+              handleValue={onChangeValue}
+              index={0} />
+            </td>
+            <td>
+              <InputText title='Annual Investment'
+              handleValue={onChangeValue}
+              index={1} />
+            </td>
           </tr>
           <tr>
-            <td><InputText title='Expected Return' /></td>
-            <td><InputText title='Duration' /></td>
+            <td>
+              <InputText title='Expected Return'
+              handleValue={onChangeValue}
+              index={2} />
+            </td>
+            <td>
+              <InputText title='Duration'
+              handleValue={onChangeValue}
+              index={3}
+              type='int' />
+            </td>
           </tr>
         </tbody>
       </table>
