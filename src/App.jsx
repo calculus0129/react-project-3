@@ -3,7 +3,6 @@ import InputBox from "./components/InputBox";
 import InputText from "./components/InputText";
 import Results from "./components/Results";
 import { useState } from "react";
-import { calculateInvestmentResults } from './util/investment';
 
 function App() {
   const [values, changeValues] = useState({});
@@ -50,7 +49,7 @@ function App() {
       </table>
     </InputBox>
 
-    <Results values={values}></Results>
+    <Results values={values} id='result' className='center'></Results>
   </>;
 }
 
