@@ -1,9 +1,9 @@
-export default function InputText({ title, index, handleValue, type = 'float' }) {
+export default function InputText({ title, name, handleValue, type = 'float' }) {
     return <><label>{title}</label>
         <input type="text" onChange={(hitEvent) =>
             handleValue(
-                index,
-                type == 'float'
+                name,
+                type === 'float'
                     ? parseFloat(hitEvent.target.value.replace(',','.'))
                     : parseInt(hitEvent.target.value)
             )
