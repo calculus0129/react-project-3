@@ -3,12 +3,13 @@ import InputBox from "./components/InputBox";
 import InputText from "./components/InputText";
 import Results from "./components/Results";
 import { useState } from "react";
+import { calculateInvestmentResults } from './util/investment';
 
 function App() {
-  const [values, changeValues] = useState([]);
-  function onChangeValue(index, value) {
+  const [values, changeValues] = useState({});
+  function onChangeValue(name, value) {
     changeValues((prevValues) => {
-      prevValues[index] = value;
+      prevValues[name] = value;
       console.log(prevValues);
       return prevValues;
     });
@@ -23,31 +24,32 @@ function App() {
             <td>
               <InputText title='Initial Investment'
               handleValue={onChangeValue}
-              index={0} />
+              name='initialInvestment' />
             </td>
             <td>
               <InputText title='Annual Investment'
               handleValue={onChangeValue}
-              index={1} />
+              name='annualInvestment' />
             </td>
           </tr>
           <tr>
             <td>
               <InputText title='Expected Return'
               handleValue={onChangeValue}
-              index={2} />
+              name='expectedReturn' />
             </td>
             <td>
               <InputText title='Duration'
               handleValue={onChangeValue}
-              index={3}
+              name='duration'
               type='int' />
             </td>
           </tr>
         </tbody>
       </table>
     </InputBox>
-    <Results></Results>
+
+    <Results values={values}></Results>
   </>;
 }
 
