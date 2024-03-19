@@ -9,9 +9,10 @@ function App() {
   const [values, changeValues] = useState({});
   function onChangeValue(name, value) {
     changeValues((prevValues) => {
-      prevValues[name] = value;
-      console.log(prevValues);
-      return prevValues;
+      return {
+        ...prevValues,
+        [name]: value,
+      };
     });
   }
 
