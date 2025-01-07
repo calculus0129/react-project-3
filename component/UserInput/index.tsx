@@ -37,6 +37,7 @@ const UserInput: React.FC<userInputProps> = ({ inv, setInv }) => {
             title="Expected Return"
             state={inv.eRet}
             setState={setElement("eRet")}
+            float={true}
           />
         </p>
         <p>

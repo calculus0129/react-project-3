@@ -13,6 +13,7 @@ export default function Home() {
     eRet: 6,
     duration: 10,
   });
+  const validDuration = inv.duration > 0;
   return (
     <>
       <header id="header">
@@ -25,9 +26,13 @@ export default function Home() {
       <section id="user-input">
         <UserInput inv={inv} setInv={setInv} />
       </section>
-      <table id="result">
-        <Result {...inv} />
-      </table>
+      {validDuration ? (
+        <table id="result">
+          <Result {...inv} />
+        </table>
+      ) : (
+        <p className="center">Please enter a valid duration</p>
+      )}
     </>
   );
 }
