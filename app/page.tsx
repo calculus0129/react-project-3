@@ -4,12 +4,15 @@ import { useState } from "react";
 import "./page.css";
 import UserInput from "@/component/UserInput";
 import Result from "@/component/Result";
+import InputData from "@/data/InputData";
 
 export default function Home() {
-  const [iInv, setIInv] = useState(15000);
-  const [aInv, setAInv] = useState(1200);
-  const [eRet, setERet] = useState(6);
-  const [duration, setDuration] = useState(10);
+  const [inv, setInv] = useState<InputData>({
+    iInv: 15000,
+    aInv: 1200,
+    eRet: 6,
+    duration: 10,
+  });
   return (
     <>
       <header id="header">
@@ -19,17 +22,12 @@ export default function Home() {
         />
         <h1>Investment Calculator</h1>
       </header>
-      <UserInput
-        iInv={iInv}
-        aInv={aInv}
-        eRet={eRet}
-        duration={duration}
-        setIInv={setIInv}
-        setAInv={setAInv}
-        setERet={setERet}
-        setDuration={setDuration}
-      />
-      <Result iInv={iInv} aInv={aInv} eRet={eRet} duration={duration} />
+      <section id="user-input">
+        <UserInput inv={inv} setInv={setInv} />
+      </section>
+      <table id="result">
+        <Result {...inv} />
+      </table>
     </>
   );
 }

@@ -1,59 +1,53 @@
 import NumInput from "./NumInput";
+import InputData from "@/data/InputData";
 
 interface userInputProps {
-  iInv: number;
-  setIInv: (value: React.SetStateAction<number>) => void;
-  aInv: number;
-  setAInv: (value: React.SetStateAction<number>) => void;
-  eRet: number;
-  setERet: (value: React.SetStateAction<number>) => void;
-  duration: number;
-  setDuration: (value: React.SetStateAction<number>) => void;
+  inv: InputData;
+  setInv: React.Dispatch<React.SetStateAction<InputData>>;
 }
 
-const UserInput: React.FC<userInputProps> = ({
-  iInv,
-  setIInv,
-  aInv,
-  setAInv,
-  eRet,
-  setERet,
-  duration,
-  setDuration,
-}) => {
+const UserInput: React.FC<userInputProps> = ({ inv, setInv }) => {
+  const setElement = (name: string) => {
+    return (state: number) =>
+      setInv(
+        (prevInv: InputData): InputData => ({ ...prevInv, [name]: state }),
+      );
+  };
   return (
-    <table id="user-input">
-      <tbody>
-        <tr className="input-group">
-          <td>
-            <NumInput
-              title="Initial Investment"
-              state={iInv}
-              setState={setIInv}
-            />
-          </td>
-          <td>
-            <NumInput
-              title="Annual Investment"
-              state={aInv}
-              setState={setAInv}
-            />
-          </td>
-        </tr>
-        <tr className="input-group">
-          <td>
-            <NumInput title="Expected Return" state={eRet} setState={setERet} />
-          </td>
-          <td>
-            <NumInput
-              title="Duration"
-              state={duration}
-              setState={setDuration}
-            />
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <div className="input-group">
+        <p>
+          <NumInput
+            title="Initial Investment"
+            state={inv.iInv}
+            setState={setElement("iInv")}
+          />
+        </p>
+        <p>
+          <NumInput
+            title="Initial Investment"
+            state={inv.aInv}
+            setState={setElement("aInv")}
+          />
+        </p>
+      </div>
+      <div className="input-group">
+        <p>
+          <NumInput
+            title="Expected Return"
+            state={inv.eRet}
+            setState={setElement("eRet")}
+          />
+        </p>
+        <p>
+          <NumInput
+            title="Duration"
+            state={inv.duration}
+            setState={setElement("duration")}
+          />
+        </p>
+      </div>
+    </>
   );
 };
 

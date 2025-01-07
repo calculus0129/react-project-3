@@ -3,18 +3,12 @@ import {
   calculateInvestmentResults,
   formatter,
 } from "@/util/investment";
+import InputData from "@/data/InputData";
 
-interface ResultProps {
-  iInv: number;
-  aInv: number;
-  eRet: number;
-  duration: number;
-}
-
-const Result: React.FC<ResultProps> = ({ iInv, aInv, eRet, duration }) => {
+const Result: React.FC<InputData> = ({ iInv, aInv, eRet, duration }) => {
   let totalInterest = 0;
   return (
-    <table id="result">
+    <>
       <thead>
         <tr>
           <th>Year</th>
@@ -42,7 +36,7 @@ const Result: React.FC<ResultProps> = ({ iInv, aInv, eRet, duration }) => {
           },
         )}
       </tbody>
-    </table>
+    </>
   );
 };
 

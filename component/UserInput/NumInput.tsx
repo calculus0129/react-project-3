@@ -1,7 +1,7 @@
 interface NumInputProps {
   title: string;
   state: number;
-  setState: (value: React.SetStateAction<number>) => void;
+  setState: (state: number) => void;
 }
 
 const NumInput: React.FC<NumInputProps> = ({ title, state, setState }) => {
@@ -12,6 +12,7 @@ const NumInput: React.FC<NumInputProps> = ({ title, state, setState }) => {
         type="number"
         value={state}
         onChange={(e) => setState(Number(e.target.value))}
+        required
       />
     </>
   );
